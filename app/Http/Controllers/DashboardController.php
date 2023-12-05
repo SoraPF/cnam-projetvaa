@@ -15,4 +15,8 @@ class DashboardController extends Controller
             'users' => $participants,
         ]);
     }
+    public function create()
+    {
+        return view('newparticipant', []);
+    }
 }
