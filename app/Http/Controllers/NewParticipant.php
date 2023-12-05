@@ -16,17 +16,14 @@ class NewParticipant extends Controller
            'email'=>['required','email'],
            'password'=>'required',
         ]);
-        var_dump($incomingFields);
-        echo('$incomingFields');
-        exit();
+
         $incomingFields['password'] = bcrypt($incomingFields['password']);
 
-        /*
         $myUser = new User;
         $myUser->name = $request->name;
         $myUser->email = $request->email;
         $myUser->password = $request->password;
-        $myUser->save();*/
+        $myUser->save();
 
         return redirect('/dashboard');
     }
@@ -38,6 +35,6 @@ class NewParticipant extends Controller
     public function suppression(User $user){
         $user->delete();
 
-        return back()->switch("successDelete","user supprimé avec succès!");
+        return back()->with("successDelete","user supprimé avec succès!");
     }
 }

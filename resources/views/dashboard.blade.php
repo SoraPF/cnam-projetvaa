@@ -11,7 +11,11 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in!") }}
-
+                    @if(session()->has("successDelete"))
+                        <div class="alert alert-success">
+                            <h3>{{session()->get('successDelete')}}</h3>
+                        </div>
+                    @endif
                     <table>
                         <thead>
                         <tr>
@@ -29,9 +33,10 @@
                                 <td>number</td>
                                 <td>
                                     <a href="/editeparticipant" class="btn btn-info">Edite</a>
-                                    <a href="#" class="btn btn-info" onclick="if(confirm('Vouler-vous vraiment supprimer cet utilisateur'))
-                                    {document.getElementById(id='form-{{$user->id}}').submit}">Suppression</a>
-                                    <form id="form-{{$user->id}}" action="{{route('user.delete', ['user'=>$user->id])}}" method="post">
+                                    <a href="#" class="btn btn-danger" onclick="if(confirm('Vouler-vous vraiment supprimer cet utilisateur'))
+                                    {document.getElementById('form-{{$user->id}}').submit() }">Suppression</a>
+                                    <form id="form-{{$user->id}}" action="{{route('user.delete',
+                                    ['user'=>$user->id])}}" method="post">
                                         @csrf
                                         <input type="hidden" name="_method" value="delete">
                                     </form>
