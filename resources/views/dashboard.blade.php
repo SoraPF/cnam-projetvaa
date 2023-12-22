@@ -30,7 +30,7 @@
                             <tr>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>number</td>
+                                <td>{{$user->telephone}}</td>
                                 <td>
                                     <a href="/editeparticipant" class="btn btn-info">Edite</a>
                                     <a href="#" class="btn btn-danger" onclick="if(confirm('Vouler-vous vraiment supprimer cet utilisateur'))

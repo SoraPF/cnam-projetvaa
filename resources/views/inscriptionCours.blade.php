@@ -16,16 +16,16 @@
                         </thead>
                         <tbody>
                         <td>
-                            <button class="btn">S'inscrire</button>
-                            date
+                            <form action="{{route('inscritMardi')}}" method="post">
+                                @csrf
+                                <button class="btn">S'inscrire</button>
+                                date
+                            </form>                            
                         </td>
                         <td>
                             <button class="btn">S'inscrire</button>
                             date
-                        </td>
-                        <form action="{{route('inscritMardi')}}" method="post">
-                            @csrf
-                        </form>
+                        </td>                        
                         </tbody>
                     </table>
                 </div>

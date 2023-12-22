@@ -14,6 +14,7 @@ class NewParticipant extends Controller
         $incomingFields = $request->validate([
            'name'=>['required','min:3'],
            'email'=>['required','email'],
+           'telephone'=>['required','telephone','min:8'],
            'password'=>'required',
         ]);
 
@@ -22,6 +23,7 @@ class NewParticipant extends Controller
         $myUser = new User;
         $myUser->name = $request->name;
         $myUser->email = $request->email;
+        $myUser->telephone = $request->telephone;
         $myUser->password = $request->password;
         $myUser->save();
 
