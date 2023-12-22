@@ -19,4 +19,9 @@ class DashboardController extends Controller
     {
         return view('newparticipant', []);
     }
+
+    public function inscriptionCours()
+    {
+        return view('inscriptionCours',[]);
+    }
 }
