@@ -20,11 +20,14 @@
                                 @csrf
                                 <button class="btn">S'inscrire</button>
                                 date
-                            </form>                            
+                            </form>
                         </td>
                         <td>
-                            <button class="btn">S'inscrire</button>
-                            date
+                            <form action="{{route('inscritvendredi')}}" method="post">
+                                @csrf
+                                <button class="btn">S'inscrire</button>
+                                date
+                            </form>
                         </td>                        
                         </tbody>
                     </table>

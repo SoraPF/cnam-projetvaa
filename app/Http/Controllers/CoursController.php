@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CoursController extends Controller
 {
     public function inscritMardi(){
-
+        //$mardi = new ;
         return view('inscriptionCours',[]);
     }
 
