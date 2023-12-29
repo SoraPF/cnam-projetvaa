@@ -32,6 +32,8 @@ Route::prefix('dashboard')->group(function (){
     Route::get('cours', [DashboardController::class, 'inscriptionCours'])->name('inscriptionCours');
     Route::post('cours/m', [CoursController::class, 'inscritMardi'])->name('inscritMardi');
     Route::post('cours/v', [CoursController::class, 'inscritvendredi'])->name('inscritvendredi');
+    Route::get('cours/create', [CoursController::class, 'pageCreateCours'])->name('pageCreateCours');
+    Route::post('cours/create',[CoursController::class, 'createCours'])->name('createCours');
 });
 
 Route::delete('/user/{user}', [NewParticipant::class, 'suppression'])->name("user.delete");
