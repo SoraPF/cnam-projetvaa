@@ -80,3 +80,9 @@ faire les command suivante dans l'ordre:
 - npm install 
 - npm run dev
 
+Tu sera oblier de creer un cours via l'utilisateur Benjamin en te connectant avec sont email: " dedardel@email.me " et sont mot de passe " password " 
+apres ça tu poura allez dans l'onglet create cours pour creer un cour.
+
+ce déconnecter pour ce connecter avec le compte jason avec " jissang@email.me " et sont mode de passe " passeword "
+allez dans l'onglet inscription cours pour s'y inscrire sois mardi soi mercredi (en fonction de la creation pressedente).
+

@@ -10,11 +10,12 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-800 dark:text-gray-100">
                     <form action="{{route('createCours')}}" method="post">
+                        @csrf
                         <input type="text" name="titre" class="text-gray-800 w-full"><br>
                         <select name="niveau" class="text-gray-800  w-full">
-                            <option>débutant</option>
-                            <option>intermédiaire</option>
-                            <option>profetionnel</option>
+                            <option value="1">débutant</option>
+                            <option value="2">intermédiaire</option>
+                            <option value="3">professionnel</option>
                         </select><br>
                         
                         <input type="hidden" name="id" value="{{$id}}">

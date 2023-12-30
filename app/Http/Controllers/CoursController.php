@@ -32,17 +32,15 @@ class CoursController extends Controller
             'titre'=>['required','min:3'],
             'niveau'=>['required'],
             'id'=>['required'],
-         ]);
+         ]);     
+
+         Cours::create([
+            'titre' => $request->titre,
+            'niveau' => $request->niveau,
+            'coach_id' => $request->id,
+            'description' => "",
+        ]);
  
-         $incomingFields['password'] = bcrypt($incomingFields['password']);
- 
-         $myUser = new User;
-         $myUser->name = $request->name;
-         $myUser->email = $request->email;
-         $myUser->telephone = $request->telephone;
-         $myUser->password = $request->password;
-         $myUser->save();
- 
-         return redirect('/dashboard/createCours');
+         return redirect('/dashboard/cours/create');
     }
 }
