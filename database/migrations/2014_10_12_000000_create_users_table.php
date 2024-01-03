@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->integer('mobile')->unique();
-            $table->enum('role', ['rameur', 'coach'])->default('participant');
+            $table->enum('role', ['rameur', 'coach'])->default('rameur');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

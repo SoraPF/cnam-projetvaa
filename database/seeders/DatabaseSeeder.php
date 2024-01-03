@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Benjamin',
                 'email' => 'dedardel@email.me',
                 'password' => bcrypt('password'),
-                'telephone' => rand(10000000, 99999999),
+                'mobile' => rand(10000000, 99999999),
                 'role' => 'coach'
             ]);
 
@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'jason',
                 'email' => 'jissang@email.me',
                 'password' => bcrypt('password'),
-                'telephone' => rand(10000000, 99999999),
+                'mobile' => rand(10000000, 99999999),
             ]);
 
             echo "Seeder completed successfully.\n";

@@ -19,6 +19,8 @@ return new class extends Migration
 
         Schema::create('equipe_rameur', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('equipe_id');
+            $table->unsignedBigInteger('rameur_id');
             $table->foreign('equipe_id')->references('id')->on('equipe');
             $table->foreign('rameur_id')->references('id')->on('users')->where('role','=','rameur');
             $table->timestamps();
@@ -26,6 +28,8 @@ return new class extends Migration
 
         Schema::create('equipe_coach', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('equipe_id');
+            $table->unsignedBigInteger('coach_id');
             $table->foreign('equipe_id')->references('id')->on('equipe');
             $table->foreign('coach_id')->references('id')->on('users')->where('role','=','coach');
             $table->timestamps();
