@@ -78,11 +78,29 @@ class CoursController extends Controller
             return redirect('/dashboard/cours/create');
         } catch (QueryException $e) {            
             return redirect()->back()->with('error', $e->getMessage());
-        }         
+        }
     }
 
-    public function gestionCours(){
-        
-        return view('gestionCours');
+    public function gestionCours(Request $request){
+        if($request->jour == 'mardi'){
+            $content = cours::where('jours',"=",'mardi')->first();
+            if($content){
+                $participants = cours_rameur::where('id_cours','=',$content);
+                foreach($participants as $value){
+                    $participants_name += $value->name;
+                }
+                return view('gestionCours',compact('participant_name'));
+            }                   
+        }elseif($request->jour == 'vendredi'){
+            $content = cours::where('jours',"=",'vendredi')->first();
+            if($content){
+                $participants = cours_rameur::where('id_cours','=',$content);
+                foreach($participants as $value){
+                    $participants_name += $value->name;
+                }
+                return view('gestionCours',compact('participant_name'));
+            }
+        }
+        return view('gestionCours');        
     }
 }

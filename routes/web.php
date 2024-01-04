@@ -33,7 +33,7 @@ Route::prefix('dashboard')->group(function (){
         Route::get('/create', [CoursController::class, 'pageCreateCours'])->name('pageCreateCours');
         Route::post('/create',[CoursController::class, 'createCours'])->name('createCours');
         
-        Route::post('/gestion',[CoursController::class, 'gestionCours'])->name('gestionCours');
+        Route::get('/gestion',[CoursController::class, 'gestionCours'])->name('gestionCours');
     });
 });
 
