@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('titre');
             $table->text('description');
             $table->integer('niveau');
+            $table->enum('jours',['Mardi','vendredi']);
             $table->unsignedBigInteger('coach_id');
             $table->foreign('coach_id')->references('id')->on('users')->where('role','=','coach');
             $table->timestamps();

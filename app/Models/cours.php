@@ -9,7 +9,7 @@ class cours extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['titre', 'description', 'niveau', 'coach_id'];
+    protected $fillable = ['titre', 'description','jours', 'niveau', 'coach_id'];
 
     public function coach()
     {
