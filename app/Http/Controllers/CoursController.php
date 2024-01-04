@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
-use App\Models\User;
-use App\Models\Cours;
+use Illuminate\Database\QueryException;
+use App\Http\Controllers\Log;
+use App\Models\cours;
 use App\Models\cours_rameur;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,8 @@ class CoursController extends Controller
         $user = auth()->user(); // Assuming users are authenticated
         $cours = cours::all();        
         
-        $mardiCours = Cours::where('jours', 'Mardi')->first();
-        $vendrediCours = Cours::where('jours', 'vendredi')->first();
+        $mardiCours = cours::where('jours', 'Mardi')->first();
+        $vendrediCours = cours::where('jours', 'vendredi')->first();
         
         if ($mardiCours) {
             // Create a new record in the cours_rameur table
@@ -34,8 +35,8 @@ class CoursController extends Controller
         $user = auth()->user(); // Assuming users are authenticated
         $cours = cours::all();        
         
-        $mardiCours = Cours::where('jours', 'Mardi')->first();
-        $vendrediCours = Cours::where('jours', 'vendredi')->first();
+        $mardiCours = cours::where('jours', 'Mardi')->first();
+        $vendrediCours = cours::where('jours', 'vendredi')->first();
         
         if ($vendrediCours) {
             // Create a new record in the cours_rameur table
@@ -64,14 +65,24 @@ class CoursController extends Controller
             'id'=>['required'],
          ]);     
 
-         Cours::create([
-            'titre' => $request->titre,
-            'niveau' => $request->niveau,
-            'jours' => $request->jours,
-            'coach_id' => $request->id,
-            'description' => "",
-        ]);
- 
-         return redirect('/dashboard/cours/create');
+         try{
+            cours::create([
+                'titre' => $request->titre,
+                'niveau' => $request->niveau,
+                'jours' => $request->jours,
+                'coach_id' => $request->id,
+                'description' => "",
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+            return redirect('/dashboard/cours/create');
+        } catch (QueryException $e) {            
+            return redirect()->back()->with('error', $e->getMessage());
+        }         
+    }
+
+    public function gestionCours(){
+        
+        return view('gestionCours');
     }
 }

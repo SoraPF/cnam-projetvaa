@@ -24,12 +24,17 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::prefix('dashboard')->group(function (){
-    Route::get('cours', [DashboardController::class, 'inscriptionCours'])->name('inscriptionCours');
-    Route::post('cours/m', [CoursController::class, 'inscritMardi'])->name('inscritMardi');
-    Route::post('cours/v', [CoursController::class, 'inscritvendredi'])->name('inscritvendredi');
-    Route::get('cours/create', [CoursController::class, 'pageCreateCours'])->name('pageCreateCours');
-    Route::post('cours/create',[CoursController::class, 'createCours'])->name('createCours');
+Route::prefix('dashboard')->group(function (){    
+    Route::get('cours', [DashboardController::class, 'inscriptionCours'])->name('inscriptionCours');        
+    Route::prefix('cours')->group(function(){
+        Route::post('/m', [CoursController::class, 'inscritMardi'])->name('inscritMardi');
+        Route::post('/v', [CoursController::class, 'inscritvendredi'])->name('inscritvendredi');
+
+        Route::get('/create', [CoursController::class, 'pageCreateCours'])->name('pageCreateCours');
+        Route::post('/create',[CoursController::class, 'createCours'])->name('createCours');
+        
+        Route::post('/gestion',[CoursController::class, 'gestionCours'])->name('gestionCours');
+    });
 });
 
 Route::middleware('auth')->group(function () {
